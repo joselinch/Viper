@@ -16,6 +16,7 @@ class MovieListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         presenter?.refresh()
@@ -41,8 +42,16 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "celula", for: indexPath)
-        cell.textLabel?.text = movies[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieListCell
+        
+        let currentMovie = movies[indexPath.row]
+        
+        cell.titleLabel.text = currentMovie.title
+        cell.descriptionLabel.text = currentMovie.description
+        cell.ratingLabel.text = String(currentMovie.rating)
+        cell.imagePoster.image = currentMovie.imageCover
+        
+        
         return cell
     }
     

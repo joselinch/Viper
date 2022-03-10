@@ -13,14 +13,13 @@ class ListInteractor: PresenterToInteractorListProtocol {
     
     func loadMovies() {
         
-        let data = Movie(title: "Titulo 01", score: 22, description: "Descricao 01")
-        data.title = "Teste 01"
-        data.description = "Descricao 01"
-        data.score = 22
+        let _ = Movie(id: 1, title: "Titulo 01", overview: "mt bom", rating: 0.0)
         
-        let serverData = MovieList(someData: [Movie(title: "Titulo 01", score: 22, description: "Descricao 01"), Movie(title: "Titulo 02", score: 22, description: "Descricao 02"), Movie(title: "Titulo 03", score: 22, description: "Descricao 03"), Movie(title: "Titulo 04", score: 22, description: "Descricao 04")])
+        let movies = [Movie(id: 1, title: "Titulo 01", overview: "mt bom", rating: 0.4), Movie(id: 2, title: "Titulo 02", overview: "horrivel", rating: 9.4), Movie(id: 3, title: "Titulo 03", overview: "Fala galera bruninho s07 de volta", rating: 10.0), Movie(id: 4, title: "Titulo 04", overview: "UAIDUHAIDUAIDUAIDAUDHIAUDHAIDUHAIDUAHIDUAHIDAUHDIAUDHAIUDHAIUDHAIDUHAIDUHAIDUAHIDASUHDIASUDHASIDUAHSDISDHAIDHDIUHAIDSHDIASUDAHSIDHAIUAHDIUDHASIUDASHIDAUSDHAIUDHAIDHAIDUHASIDASHUDUIASDHAISDFUHAISHSAIUASHIUDAUHDSIUASDUIASHASHUDAHUIDIAHIASUDHASIUDASHUIDHSAUIDUIHASDUSAHISUDHASIDUASHDIASUDHASISDUHSAISUDHASIUDHASIUSHDIAUDHAIUDSHAIDUSHAISUDHAIDSAHISUHDUSAIDUHAIDUSAIUHDIHUAIUDHUASIUDHUASIDUASUHDIUASIHDASIUDUHSAIUDASDHUAIUSDHASIUDHAS", rating: 4.0)]
         
-        self.presenter?.fetchQuotesSuccess(movie: serverData.someData)
+//        let serverData = MovieList(someData: [Movie(id: 1, title: "Titulo 01", overview: "mt bom", rating: 0.4), Movie(id: 2, title: "Titulo 02", overview: "horrivel", rating: 9.4), Movie(id: 3, title: "Titulo 03", overview: "Fala galera bruninho s07 de volta", rating: 10.0), Movie(id: 4, title: "Titulo 04", overview: "UAIDUHAIDUAIDUAIDAUDHIAUDHAIDUHAIDUAHIDUAHIDAUHDIAUDHAIUDHAIUDHAIDUHAIDUHAIDUAHIDASUHDIASUDHASIDUAHSDISDHAIDHDIUHAIDSHDIASUDAHSIDHAIUAHDIUDHASIUDASHIDAUSDHAIUDHAIDHAIDUHASIDASHUDUIASDHAISDFUHAISHSAIUASHIUDAUHDSIUASDUIASHASHUDAHUIDIAHIASUDHASIUDASHUIDHSAUIDUIHASDUSAHISUDHASIDUASHDIASUDHASISDUHSAISUDHASIUDHASIUSHDIAUDHAIUDSHAIDUSHAISUDHAIDSAHISUHDUSAIDUHAIDUSAIUHDIHUAIUDHUASIUDHUASIDUASUHDIUASIHDASIUDUHSAIUDASDHUAIUSDHASIUDHAS", rating: 4.0)])
+        
+        self.presenter?.fetchQuotesSuccess(movie: movies)
 
     }
     
