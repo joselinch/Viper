@@ -19,6 +19,14 @@ class MovieListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        presenter?.refresh()
+    }
+    
+    @objc func refresh() {
         presenter?.refresh()
     }
     
@@ -28,6 +36,10 @@ extension MovieListViewController: PresenterToViewListProtocol {
     
     func onFetchQuotesSuccess(movie: [Movie]) {
         self.movies = movie
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
     
     func onFetchQuotesFailure(error: String) {
